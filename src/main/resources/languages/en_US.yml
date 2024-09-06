@@ -1,3 +1,4 @@
 # Do not touch %str% as it does get replaced from the plugin!
 
-playerDeath: %p% has died. %r%.
+init: "[DeathLink] has been loaded successfully!"
+playerDeath: "%p% has died. %r%."

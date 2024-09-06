@@ -53,16 +53,16 @@ public class OnDeath implements Listener {
                 }
 
                 Bukkit.getScheduler().scheduleSyncDelayedTask(DeathLink.plugin, () -> {
-                    WorldCreator worldCreator = new WorldCreator(worldName);
+                    // WorldCreator worldCreator = new WorldCreator(worldName);
 
-                    worldCreator.environment(World.Environment.valueOf(worldType));
-                    worldCreator.type(WorldType.valueOf(worldType));
+                    // worldCreator.environment(World.Environment.valueOf(worldType));
+                    // worldCreator.type(WorldType.valueOf(worldType));
 
-                    worldCreator.createWorld();
+                    // worldCreator.createWorld();
 
                     // Server-Stop, wenn die Welt fertig generiert wurde
                     // GitHub Problem durch "fremden Owner" (siehe "Commit" Tab - ALT+0 - unten links)
-                    // ChatGPT nach universeller Lösung fragen statt 1:1 dem vorgeschlagenen Befehl
+                    // ChatGPT nach universeller Lösung fragen statt 1:1 den vorgeschlagenen Befehl
                 }, config.getInt("timeUntilWorldReset"));
             }
         }

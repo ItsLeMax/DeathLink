@@ -1,3 +1,4 @@
 # Lass die Finger von %str%, da es vom Plugin ersetzt wird!
 
-playerDeath: %p% ist gestorben. %r%
+init: "[DeathLink] wurde erfolgreich geladen!"
+playerDeath: "%p% ist gestorben. %r%."

@@ -1,0 +1,23 @@
+# This will set the language of the plugin.
+# You will find different language files inside \languages\.
+# Write their file name (without *.yml) down below to use the respective language.
+language: en_US
+
+# Choose what happens to everyoneon ones death - can be one of the following:
+# spectator: will set everyone into spectator mode like in hardcore singleplayer but without death screen
+# killall: kills everyone that is not dead yet
+deathStyle: spectator
+
+# If the world should be deleted and newly generated on ones death
+resetWorldOnDeath: true
+
+# How much time will pass after ones death until the server generates a new world
+timeUntilWorldReset: 10
+
+# Will set the worlds name inside the server directory
+worldName: world
+
+# Will determine the type of one newly created world
+# only use the text after the colon
+# reference: https://docs.fps.ms/minecraft/change-world-type/#list-of-all-world-types
+worldType: normal

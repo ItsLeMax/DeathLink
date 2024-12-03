@@ -22,9 +22,4 @@ public final class DeathLink extends JavaPlugin {
 
         Bukkit.getConsoleSender().sendMessage("§3" + configLib.lang("init"));
     }
-
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
-    }
 }

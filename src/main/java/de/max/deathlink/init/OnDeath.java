@@ -41,6 +41,8 @@ public class OnDeath implements Listener {
             );
             player.sendMessage("");
 
+            event.setDeathMessage(null);
+
             if (config.getBoolean("resetWorldOnDeath")) {
                 String worldName = config.getString("worldName");
                 if (worldName == null) {

@@ -1,7 +1,6 @@
 # DeathLink
 
-Locks everyone on ones death in minecraft and optionally resets the world\
-![1 0 0-death](https://github.com/user-attachments/assets/3837975b-2cef-4c39-876b-e5b948a8ca39)
+Locks everyone on ones death in minecraft and optionally resets the world
 
 ## Setup
 

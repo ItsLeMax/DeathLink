@@ -1,5 +1,7 @@
 # DeathLink
 
+### Minecraft Version: 1.21.*
+
 Locks everyone on ones death in minecraft and optionally resets the world
 
 ## Setup

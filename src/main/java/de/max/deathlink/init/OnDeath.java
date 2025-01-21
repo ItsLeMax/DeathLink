@@ -1,5 +1,6 @@
 package de.max.deathlink.init;
 
+import de.max.ilmlib.libraries.MessageLib;
 import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -8,14 +9,15 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
 import static de.max.deathlink.init.DeathLink.configLib;
+import static de.max.deathlink.init.DeathLink.messageLib;
 
 public class OnDeath implements Listener {
     FileConfiguration config = configLib.getConfig("config");
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event) throws Exception {
-        Player diedPlayer = event.getEntity();
-        diedPlayer.setHealth(20);
+        Player deadPlayer = event.getEntity();
+        deadPlayer.setHealth(20);
 
         for (Player player : Bukkit.getOnlinePlayers()) {
             String deathStyle = config.getString("deathStyle");
@@ -28,18 +30,15 @@ public class OnDeath implements Listener {
                     player.setHealth(0);
                     break;
                 case null, default:
-                    throw new IllegalStateException("written deathStyle does not exist: " + deathStyle);
+                    throw new IllegalStateException("the death style inside the config does not exist: " + deathStyle);
             }
 
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1, 1);
 
-            player.sendMessage("");
-            player.sendMessage("§8> §3DeathLink");
-            player.sendMessage("§c" + configLib.lang("playerDeath")
-                    .replace("%p%", diedPlayer.getName())
+            messageLib.sendInfo(player, MessageLib.Template.ERROR, configLib.lang("playerDeath")
+                    .replace("%p%", deadPlayer.getName())
                     .replace("%r%", "\n§7" + event.getDeathMessage())
             );
-            player.sendMessage("");
 
             event.setDeathMessage(null);
 
@@ -63,8 +62,6 @@ public class OnDeath implements Listener {
                     // worldCreator.createWorld();
 
                     // Server-Stop, wenn die Welt fertig generiert wurde
-                    // GitHub Problem durch "fremden Owner" (siehe "Commit" Tab - ALT+0 - unten links)
-                    // ChatGPT nach universeller Lösung fragen statt 1:1 den vorgeschlagenen Befehl
                 }, config.getInt("timeUntilWorldReset"));
             }
         }

@@ -26,6 +26,6 @@ public final class DeathLink extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new OnDeath(), this);
 
-        Bukkit.getConsoleSender().sendMessage("§3" + configLib.lang("init"));
+        Bukkit.getConsoleSender().sendMessage("§3" + configLib.lang("init").replace("%p%", "[DeathLink]"));
     }
 }

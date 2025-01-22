@@ -1,4 +1,4 @@
-# Lass die Finger von %str%, da es vom Plugin ersetzt wird!
+# Lass die Finger von %%, da es vom Plugin ersetzt wird!
 
-init: "[DeathLink] wurde erfolgreich geladen!"
+init: "%p% wurde erfolgreich geladen!"
 playerDeath: "%p% ist gestorben. %r%."

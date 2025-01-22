@@ -43,12 +43,9 @@ public class OnDeath implements Listener {
             event.setDeathMessage(null);
 
             if (config.getBoolean("resetWorldOnDeath")) {
-                String worldName = config.getString("worldName");
-                if (worldName == null) {
-                    throw new Exception("the worlds name inside the config cannot be null");
-                }
-
+                String worldName = Bukkit.getWorlds().getFirst().getName();
                 String worldType = config.getString("worldType");
+
                 if (worldType == null) {
                     throw new Exception("the worlds type inside the config cannot be null");
                 }

@@ -15,8 +15,7 @@ public final class DeathLink extends JavaPlugin {
     public void onEnable() {
         plugin = this;
 
-        configLib = new ConfigLib(this);
-        configLib
+        configLib = new ConfigLib(this)
                 .createDefaults("config")
                 .createInsideDirectory("languages", "de_DE", "en_US", "custom_lang");
 

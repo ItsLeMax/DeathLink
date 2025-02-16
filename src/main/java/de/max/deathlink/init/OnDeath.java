@@ -12,10 +12,10 @@ import static de.max.deathlink.init.DeathLink.configLib;
 import static de.max.deathlink.init.DeathLink.messageLib;
 
 public class OnDeath implements Listener {
-    FileConfiguration config = configLib.getConfig("config");
-
     @EventHandler
     public void onDeath(PlayerDeathEvent event) throws Exception {
+        FileConfiguration config = configLib.getConfig("config");
+
         Player deadPlayer = event.getEntity();
         deadPlayer.setHealth(20);
 
@@ -30,7 +30,7 @@ public class OnDeath implements Listener {
                     player.setHealth(0);
                     break;
                 case null, default:
-                    throw new IllegalStateException("the death style inside the config does not exist: " + deathStyle);
+                    throw new IllegalStateException("the death style inside the config does not exist: " + deathStyle + ".");
             }
 
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1, 1);
@@ -43,11 +43,11 @@ public class OnDeath implements Listener {
             event.setDeathMessage(null);
 
             if (config.getBoolean("resetWorldOnDeath")) {
-                String worldName = Bukkit.getWorlds().getFirst().getName();
+                // String worldName = Bukkit.getWorlds().getFirst().getName();
                 String worldType = config.getString("worldType");
 
                 if (worldType == null) {
-                    throw new Exception("the worlds type inside the config cannot be null");
+                    throw new Exception("the worlds type inside the config cannot be null.");
                 }
 
                 Bukkit.getScheduler().scheduleSyncDelayedTask(DeathLink.plugin, () -> {

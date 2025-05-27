@@ -1,31 +1,63 @@
 package de.fpm_studio.deathlink;
 
-import de.max.ilmlib.libraries.ConfigLib;
-import de.max.ilmlib.libraries.MessageLib;
+import de.fpm_studio.deathlink.events.OnDeath;
+import de.fpm_studio.deathlink.util.WorldGeneration;
+import de.fpm_studio.ilmlib.libraries.ConfigLib;
+import de.fpm_studio.ilmlib.libraries.MessageLib;
+import de.fpm_studio.ilmlib.util.Template;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class DeathLink extends JavaPlugin {
-    public static DeathLink plugin;
 
-    public static ConfigLib configLib;
-    public static MessageLib messageLib;
+    private WorldGeneration worldGeneration;
+
+    private int timeUntilReset;
 
     @Override
     public void onEnable() {
-        plugin = this;
 
-        configLib = new ConfigLib(this)
-                .createDefaults("config")
-                .createInsideDirectory("languages", "de_DE", "en_US", "custom_lang");
+        // Initializing the own lib for config and message creation
 
-        messageLib = new MessageLib()
+        final ConfigLib configLib = new ConfigLib(this)
+                .createDefaultConfigs("config")
+                .createConfigsInsideDirectory("languages", "de_DE", "en_US", "custom_lang");
+
+        final MessageLib messageLib = new MessageLib()
                 .addSpacing()
                 .setPrefix("§3DeathLink §7»", true)
-                .setFormattingCode(MessageLib.Template.ERROR, 'c');
+                .setFormattingCode(Template.ERROR, 'c');
 
-        getServer().getPluginManager().registerEvents(new OnDeath(), this);
+        // World gen class initialization
 
-        Bukkit.getConsoleSender().sendMessage("§3" + configLib.lang("init").replace("%p%", "[DeathLink]"));
+        this.timeUntilReset = configLib.getConfig("config").getInt("timeUntilWorldReset");
+        final boolean archiveWorld = configLib.getConfig("config").getBoolean("archiveWorld");
+
+        this.worldGeneration = new WorldGeneration();
+        this.worldGeneration.setConfigValues(timeUntilReset, archiveWorld);
+
+        // Event registration and plugin message
+
+        getServer().getPluginManager().registerEvents(
+                new OnDeath(this, configLib, messageLib, worldGeneration), this
+        );
+
+        Bukkit.getConsoleSender().sendMessage(
+                "§3" + configLib.text("init").replace("%p%", "[DeathLink]")
+        );
+
     }
+
+    @Override
+    public void onDisable() {
+
+        // Generates a new world on manual server stop if set in the config
+
+        if (timeUntilReset != -1)
+            return;
+
+        worldGeneration.initiate();
+
+    }
+
 }

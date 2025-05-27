@@ -16,7 +16,5 @@ resetWorldOnDeath: true
 # The number can be -1, waiting for the worlds deletion until a manual server stop.
 timeUntilWorldReset: 10
 
-# This will determine the type of newly generated worlds.
-# Only use the text after the colon.
-# reference: https://docs.fps.ms/minecraft/change-world-type/#list-of-all-world-types
-worldType: normal
+# This will rename the world, adding the date into the folder name instead of deleting it completely
+archiveWorld: true

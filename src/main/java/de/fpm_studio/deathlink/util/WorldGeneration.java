@@ -43,7 +43,8 @@ public final class WorldGeneration {
     }
 
     /**
-     * Initiates the world generation process by deleting or renaming the target world, as chosen inside the config
+     * Initiates the world generation process by deleting or renaming the target world, as chosen inside the config, and
+     * stopping the server
      *
      * @author ItsLeMax
      * @since 1.0.0

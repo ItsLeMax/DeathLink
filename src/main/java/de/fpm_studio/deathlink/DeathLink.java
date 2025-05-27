@@ -43,7 +43,7 @@ public final class DeathLink extends JavaPlugin {
         );
 
         Bukkit.getConsoleSender().sendMessage(
-                "§3" + configLib.text("init").replace("%p%", "[DeathLink]")
+                "<aqua>" + configLib.text("init").replace("%p%", "[DeathLink]")
         );
 
     }

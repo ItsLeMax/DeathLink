@@ -5,5 +5,5 @@ version: ${project.version}
 website: ${project.url}
 
 depend: [ ILMLib ]
-main: de.max.deathlink.init.DeathLink
+main: de.fpm_studio.deathlink.DeathLink
 api-version: 1.21

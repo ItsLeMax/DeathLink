@@ -1,4 +1,4 @@
-package de.max.deathlink.init;
+package de.fpm_studio.deathlink;
 
 import de.max.ilmlib.libraries.ConfigLib;
 import de.max.ilmlib.libraries.MessageLib;

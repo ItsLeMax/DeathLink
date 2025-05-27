@@ -1,4 +1,4 @@
-package de.max.deathlink.init;
+package de.fpm_studio.deathlink;
 
 import de.max.ilmlib.libraries.MessageLib;
 import org.bukkit.*;
@@ -8,8 +8,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
-import static de.max.deathlink.init.DeathLink.configLib;
-import static de.max.deathlink.init.DeathLink.messageLib;
+import static de.fpm_studio.deathlink.DeathLink.configLib;
+import static de.fpm_studio.deathlink.DeathLink.messageLib;
 
 public class OnDeath implements Listener {
     @EventHandler

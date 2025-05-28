@@ -15,6 +15,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
+/**
+ * Handles the death related processes
+ *
+ * @author ItsLeMax
+ * @since 1.0.0
+ */
 @RequiredArgsConstructor
 public final class OnDeath implements Listener {
 

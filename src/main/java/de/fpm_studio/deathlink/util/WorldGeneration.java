@@ -8,6 +8,12 @@ import org.jetbrains.annotations.NotNull;
 import java.io.File;
 import java.util.UUID;
 
+/**
+ * Adds the world generation process
+ *
+ * @author ItsLeMax
+ * @since 1.0.0
+ */
 public final class WorldGeneration {
 
     @Getter

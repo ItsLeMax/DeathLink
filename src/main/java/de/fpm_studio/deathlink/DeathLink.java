@@ -8,6 +8,12 @@ import de.fpm_studio.ilmlib.util.Template;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+/**
+ * Contains the entry point of the plugin
+ *
+ * @author ItsLeMax
+ * @since 1.0.0
+ */
 public final class DeathLink extends JavaPlugin {
 
     private WorldGeneration worldGeneration;

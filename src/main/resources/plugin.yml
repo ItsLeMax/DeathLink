@@ -4,6 +4,5 @@ author: ItsLeMax
 version: ${project.version}
 website: ${project.url}
 
-depend: [ ILMLib ]
 main: de.fpm_studio.deathlink.DeathLink
 api-version: 1.21

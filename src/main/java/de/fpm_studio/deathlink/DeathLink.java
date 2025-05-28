@@ -25,7 +25,7 @@ public final class DeathLink extends JavaPlugin {
 
         final MessageLib messageLib = new MessageLib()
                 .addSpacing()
-                .setPrefix("§3DeathLink §7»", true)
+                .setPrefix("§3DeathLink §7»")
                 .setFormattingCode(Template.ERROR, 'c');
 
         // World gen class initialization
@@ -43,7 +43,7 @@ public final class DeathLink extends JavaPlugin {
         );
 
         Bukkit.getConsoleSender().sendMessage(
-                "<aqua>" + configLib.text("init").replace("%p%", "[DeathLink]")
+                "§3" + configLib.text("init").replace("%p%", "[DeathLink]")
         );
 
     }

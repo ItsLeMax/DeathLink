@@ -44,6 +44,20 @@
                         <goals>
                             <goal>shade</goal>
                         </goals>
+                        <configuration>
+
+                            <shadedArtifactAttached>false</shadedArtifactAttached>
+                            <finalName>${project.name}-1.21_${project.version}</finalName>
+                            <minimizeJar>true</minimizeJar>
+
+                            <relocations>
+                                <relocation>
+                                    <pattern>de.fpm_studio.ilmlib</pattern>
+                                    <shadedPattern>de.fpm_studio.shaded.ilmlib</shadedPattern>
+                                </relocation>
+                            </relocations>
+
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -90,14 +104,20 @@
         <dependency>
             <groupId>com.github.itslemax</groupId>
             <artifactId>ilmlib</artifactId>
-            <version>1.2.1</version>
-            <scope>provided</scope>
+            <version>1.2.2</version>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.36</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>26.0.2</version>
             <scope>provided</scope>
         </dependency>
 

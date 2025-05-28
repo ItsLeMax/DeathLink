@@ -1,7 +1,7 @@
 package de.fpm_studio.deathlink.events;
 
 import de.fpm_studio.deathlink.DeathLink;
-import de.fpm_studio.deathlink.util.WorldGeneration;
+import de.fpm_studio.deathlink.util.WorldGenHandler;
 import de.fpm_studio.ilmlib.libraries.ConfigLib;
 import de.fpm_studio.ilmlib.libraries.MessageLib;
 import de.fpm_studio.ilmlib.util.Template;
@@ -22,14 +22,14 @@ import org.bukkit.event.entity.PlayerDeathEvent;
  * @since 1.0.0
  */
 @RequiredArgsConstructor
-public final class OnDeath implements Listener {
+public final class OnDeathListener implements Listener {
 
     private final DeathLink instance;
 
     private final ConfigLib configLib;
     private final MessageLib messageLib;
 
-    private final WorldGeneration worldGeneration;
+    private final WorldGenHandler worldGenHandler;
 
     private boolean triggered;
 
@@ -46,7 +46,7 @@ public final class OnDeath implements Listener {
         final FileConfiguration config = configLib.getConfig("config");
         final Player deadPlayer = event.getEntity();
 
-        worldGeneration.setWorld(deadPlayer.getWorld());
+        worldGenHandler.setWorld(deadPlayer.getWorld());
 
         // Different death actions, set inside the config
 
@@ -86,14 +86,14 @@ public final class OnDeath implements Listener {
         // Reset world if chosen
         // -1 so the world will generate after a manual stop (see config)
 
-        final int[] timeUntilReset = {worldGeneration.getTimeUntilReset()};
+        final int[] timeUntilReset = {worldGenHandler.getTimeUntilReset()};
 
         if (timeUntilReset[0] == -1)
             return;
 
         // New gen after time
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(instance, worldGeneration::initiate, timeUntilReset[0] * 20L);
+        Bukkit.getScheduler().scheduleSyncDelayedTask(instance, worldGenHandler::initiate, timeUntilReset[0] * 20L);
 
         Bukkit.getScheduler().scheduleSyncRepeatingTask(instance, () -> {
 

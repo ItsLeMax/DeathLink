@@ -1,7 +1,7 @@
 package de.fpm_studio.deathlink;
 
-import de.fpm_studio.deathlink.events.OnDeath;
-import de.fpm_studio.deathlink.util.WorldGeneration;
+import de.fpm_studio.deathlink.events.OnDeathListener;
+import de.fpm_studio.deathlink.util.WorldGenHandler;
 import de.fpm_studio.ilmlib.libraries.ConfigLib;
 import de.fpm_studio.ilmlib.libraries.MessageLib;
 import de.fpm_studio.ilmlib.util.Template;
@@ -16,7 +16,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public final class DeathLink extends JavaPlugin {
 
-    private WorldGeneration worldGeneration;
+    private WorldGenHandler worldGenHandler;
 
     private int timeUntilReset;
 
@@ -39,13 +39,13 @@ public final class DeathLink extends JavaPlugin {
         this.timeUntilReset = configLib.getConfig("config").getInt("timeUntilWorldReset");
         final boolean archiveWorld = configLib.getConfig("config").getBoolean("archiveWorld");
 
-        this.worldGeneration = new WorldGeneration();
-        this.worldGeneration.setConfigValues(timeUntilReset, archiveWorld);
+        this.worldGenHandler = new WorldGenHandler();
+        this.worldGenHandler.setConfigValues(timeUntilReset, archiveWorld);
 
         // Event registration and plugin message
 
         getServer().getPluginManager().registerEvents(
-                new OnDeath(this, configLib, messageLib, worldGeneration), this
+                new OnDeathListener(this, configLib, messageLib, worldGenHandler), this
         );
 
         Bukkit.getConsoleSender().sendMessage(
@@ -62,7 +62,7 @@ public final class DeathLink extends JavaPlugin {
         if (timeUntilReset != -1)
             return;
 
-        worldGeneration.initiate();
+        worldGenHandler.initiate();
 
     }
 

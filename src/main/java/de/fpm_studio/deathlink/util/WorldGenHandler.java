@@ -14,7 +14,7 @@ import java.util.UUID;
  * @author ItsLeMax
  * @since 1.0.0
  */
-public final class WorldGeneration {
+public final class WorldGenHandler {
 
     @Getter
     private int timeUntilReset;

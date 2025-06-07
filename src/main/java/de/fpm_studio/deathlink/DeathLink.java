@@ -16,41 +16,36 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public final class DeathLink extends JavaPlugin {
 
-    private WorldGenHandler worldGenHandler;
+    private ConfigLib configLib;
+    private MessageLib messageLib;
 
     private int timeUntilReset;
+    private WorldGenHandler worldGenHandler;
 
     @Override
     public void onEnable() {
 
         // Initializing the own lib for config and message creation
 
-        final ConfigLib configLib = new ConfigLib(this)
+        configLib = new ConfigLib(this)
                 .createDefaultConfigs("config")
                 .createConfigsInsideDirectory("languages", "de_DE", "en_US", "custom_lang");
 
-        final MessageLib messageLib = new MessageLib()
+        messageLib = new MessageLib()
                 .addSpacing()
                 .setPrefix("§3DeathLink §7»")
                 .setFormattingCode(Template.ERROR, 'c');
 
         // World gen class initialization
 
-        this.timeUntilReset = configLib.getConfig("config").getInt("timeUntilWorldReset");
-        final boolean archiveWorld = configLib.getConfig("config").getBoolean("archiveWorld");
-
-        this.worldGenHandler = new WorldGenHandler();
-        this.worldGenHandler.setConfigValues(timeUntilReset, archiveWorld);
+        intializeWorldGen();
 
         // Event registration and plugin message
 
-        getServer().getPluginManager().registerEvents(
-                new OnDeathListener(this, configLib, messageLib, worldGenHandler), this
-        );
+        registerEvents();
 
-        Bukkit.getConsoleSender().sendMessage(
-                "§3" + configLib.text("init").replace("%p%", "[DeathLink]")
-        );
+        final String initialMessage = "§3" + configLib.text("init").replace("%p%", "[DeathLink]");
+        Bukkit.getConsoleSender().sendMessage(initialMessage);
 
     }
 
@@ -63,6 +58,35 @@ public final class DeathLink extends JavaPlugin {
             return;
 
         worldGenHandler.initiate();
+
+    }
+
+    /**
+     * Initializes the world gen class
+     *
+     * @author ItsLeMax
+     * @since 1.0.0
+     */
+    private void intializeWorldGen() {
+
+        this.timeUntilReset = configLib.getConfig("config").getInt("timeUntilWorldReset");
+        final boolean archiveWorld = configLib.getConfig("config").getBoolean("archiveWorld");
+
+        this.worldGenHandler = new WorldGenHandler();
+        this.worldGenHandler.setConfigValues(timeUntilReset, archiveWorld);
+
+    }
+
+    /**
+     * Registers the plugins events
+     *
+     * @author ItsLeMax
+     * @since 1.0.0
+     */
+    private void registerEvents() {
+
+        final OnDeathListener onDeathListener = new OnDeathListener(this, configLib, messageLib, worldGenHandler);
+        getServer().getPluginManager().registerEvents(onDeathListener, this);
 
     }
 

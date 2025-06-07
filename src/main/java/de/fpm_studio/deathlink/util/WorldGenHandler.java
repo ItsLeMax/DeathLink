@@ -1,9 +1,9 @@
 package de.fpm_studio.deathlink.util;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.UUID;
@@ -22,6 +22,7 @@ public final class WorldGenHandler {
     @Getter
     private boolean archiveWorld;
 
+    @Setter
     private World world;
 
     /**
@@ -35,17 +36,6 @@ public final class WorldGenHandler {
     public void setConfigValues(final int timeUntilReset, final boolean archiveWorld) {
         this.timeUntilReset = timeUntilReset;
         this.archiveWorld = archiveWorld;
-    }
-
-    /**
-     * Sets the world
-     *
-     * @param world World to rename or reset
-     * @author ItsLeMax
-     * @since 1.0.0
-     */
-    public void setWorld(@NotNull final World world) {
-        this.world = world;
     }
 
     /**

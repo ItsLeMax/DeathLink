@@ -47,8 +47,7 @@ public final class DeathLink extends JavaPlugin {
 
         registerEvents();
 
-        final String initialMessage = "§3" + getConfigLib().text("init")
-                .replace("%p%", "[DeathLink]");
+        final String initialMessage = "§3" + getConfigLib().text("init").replace("%p%", "[DeathLink]");
 
         Bukkit.getConsoleSender().sendMessage(initialMessage);
 

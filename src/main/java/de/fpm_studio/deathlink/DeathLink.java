@@ -5,6 +5,7 @@ import de.fpm_studio.deathlink.util.WorldGenHandler;
 import de.fpm_studio.ilmlib.libraries.ConfigLib;
 import de.fpm_studio.ilmlib.libraries.MessageLib;
 import de.fpm_studio.ilmlib.util.Template;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -14,6 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  * @author ItsLeMax
  * @since 1.0.0
  */
+@Getter
 public final class DeathLink extends JavaPlugin {
 
     private ConfigLib configLib;
@@ -85,7 +87,7 @@ public final class DeathLink extends JavaPlugin {
      */
     private void registerEvents() {
 
-        final OnDeathListener onDeathListener = new OnDeathListener(this, configLib, messageLib, worldGenHandler);
+        final OnDeathListener onDeathListener = new OnDeathListener(this);
         getServer().getPluginManager().registerEvents(onDeathListener, this);
 
     }

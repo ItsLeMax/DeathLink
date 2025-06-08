@@ -26,10 +26,10 @@ public final class OnDeathListener implements Listener {
 
     private final DeathLink instance;
 
-    private final ConfigLib configLib;
-    private final MessageLib messageLib;
+    private final ConfigLib configLib = instance.getConfigLib();
+    private final MessageLib messageLib = instance.getMessageLib();
 
-    private final WorldGenHandler worldGenHandler;
+    private final WorldGenHandler worldGenHandler = instance.getWorldGenHandler();
 
     private boolean triggered;
 

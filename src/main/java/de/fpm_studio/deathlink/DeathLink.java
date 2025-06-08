@@ -21,8 +21,9 @@ public final class DeathLink extends JavaPlugin {
     private ConfigLib configLib;
     private MessageLib messageLib;
 
-    private int timeUntilReset;
     private WorldGenHandler worldGenHandler;
+
+    private int timeUntilReset;
 
     @Override
     public void onEnable() {
@@ -46,7 +47,9 @@ public final class DeathLink extends JavaPlugin {
 
         registerEvents();
 
-        final String initialMessage = "§3" + configLib.text("init").replace("%p%", "[DeathLink]");
+        final String initialMessage = "§3" + getConfigLib().text("init")
+                .replace("%p%", "[DeathLink]");
+
         Bukkit.getConsoleSender().sendMessage(initialMessage);
 
     }
@@ -56,10 +59,10 @@ public final class DeathLink extends JavaPlugin {
 
         // Generates a new world on manual server stop if set in the config
 
-        if (timeUntilReset != -1)
+        if (getTimeUntilReset() != -1)
             return;
 
-        worldGenHandler.initiate();
+        getWorldGenHandler().initiate();
 
     }
 
@@ -71,11 +74,11 @@ public final class DeathLink extends JavaPlugin {
      */
     private void intializeWorldGen() {
 
-        this.timeUntilReset = configLib.getConfig("config").getInt("timeUntilWorldReset");
-        final boolean archiveWorld = configLib.getConfig("config").getBoolean("archiveWorld");
+        this.timeUntilReset = getConfigLib().getConfig("config").getInt("timeUntilWorldReset");
+        final boolean archiveWorld = getConfigLib().getConfig("config").getBoolean("archiveWorld");
 
         this.worldGenHandler = new WorldGenHandler();
-        this.worldGenHandler.setConfigValues(timeUntilReset, archiveWorld);
+        this.worldGenHandler.setConfigValues(getTimeUntilReset(), archiveWorld);
 
     }
 

@@ -26,15 +26,15 @@ public final class OnDeathListener implements Listener {
 
     private final DeathLink instance;
 
-    private final ConfigLib configLib = instance.getConfigLib();
-    private final MessageLib messageLib = instance.getMessageLib();
-
-    private final WorldGenHandler worldGenHandler = instance.getWorldGenHandler();
-
     private boolean triggered;
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
+
+        final ConfigLib configLib = instance.getConfigLib();
+        final MessageLib messageLib = instance.getMessageLib();
+
+        final WorldGenHandler worldGenHandler = instance.getWorldGenHandler();
 
         // Trigger plugin only once
 

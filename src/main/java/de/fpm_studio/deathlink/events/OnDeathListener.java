@@ -3,7 +3,6 @@ package de.fpm_studio.deathlink.events;
 import de.fpm_studio.deathlink.DeathLink;
 import de.fpm_studio.deathlink.util.WorldGenHandler;
 import de.fpm_studio.ilmlib.libraries.ConfigLib;
-import de.fpm_studio.ilmlib.libraries.MessageLib;
 import de.fpm_studio.ilmlib.util.Template;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Bukkit;
@@ -31,17 +30,15 @@ public final class OnDeathListener implements Listener {
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
 
-        final ConfigLib configLib = instance.getConfigLib();
-        final MessageLib messageLib = instance.getMessageLib();
-
-        final WorldGenHandler worldGenHandler = instance.getWorldGenHandler();
-
         // Trigger plugin only once
 
         if (triggered)
             return;
 
         triggered = true;
+
+        final ConfigLib configLib = instance.getConfigLib();
+        final WorldGenHandler worldGenHandler = instance.getWorldGenHandler();
 
         final FileConfiguration config = configLib.getConfig("config");
         final Player deadPlayer = event.getEntity();
@@ -71,7 +68,7 @@ public final class OnDeathListener implements Listener {
 
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1, 1);
 
-            messageLib.sendInfo(player, Template.ERROR, configLib.text("playerDeath")
+            instance.getMessageLib().sendInfo(player, Template.ERROR, configLib.text("playerDeath")
                     .replace("%p%", deadPlayer.getName())
                     .replace("%r%", "\n§7" + event.getDeathMessage())
             );

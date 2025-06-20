@@ -1,6 +1,6 @@
 package de.fpm_studio.deathlink;
 
-import de.fpm_studio.deathlink.events.OnDeathListener;
+import de.fpm_studio.deathlink.listener.OnDeathListener;
 import de.fpm_studio.deathlink.util.WorldGenHandler;
 import de.fpm_studio.ilmlib.libraries.ConfigLib;
 import de.fpm_studio.ilmlib.libraries.MessageLib;

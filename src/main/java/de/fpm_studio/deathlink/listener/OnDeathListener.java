@@ -1,4 +1,4 @@
-package de.fpm_studio.deathlink.events;
+package de.fpm_studio.deathlink.listener;
 
 import de.fpm_studio.deathlink.DeathLink;
 import de.fpm_studio.deathlink.util.WorldGenHandler;

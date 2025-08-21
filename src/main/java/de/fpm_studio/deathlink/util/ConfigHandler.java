@@ -35,14 +35,22 @@ public final class ConfigHandler {
 
     public static String COMMANDS_ERROR;
 
-    private static String COMMANDS_STATE_TOGGLED, COMMANDS_RESET, COMMANDS_NO_RESET;
+    private static String
+            COMMANDS_STATE_TOGGLED,
+            COMMANDS_RESET,
+            COMMANDS_NO_RESET;
 
-    public static String COMMANDS_NO_PERMISSIONS, EVENTS_PLAYER_DEATH, EVENTS_GENERATE;
+    public static String
+            COMMANDS_NO_PERMISSIONS,
+            EVENTS_PLAYER_DEATH,
+            EVENTS_GENERATE;
 
     public static String DEATH_STYLE;
     public static boolean IS_WORLD_RESET_ENABLED;
 
-    public static boolean INITIALIZE_WORLD_GENERATION, IS_LISTENER_ENABLED;
+    public static boolean
+            INITIALIZE_WORLD_GENERATION,
+            IS_LISTENER_ENABLED;
 
     /**
      * Creates an information about the plugins state

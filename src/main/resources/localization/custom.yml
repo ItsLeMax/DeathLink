@@ -1,0 +1,19 @@
+# Do not touch %% as it does get replaced from the plugin!
+
+# You can use this file to translate it into other languages that are not provided.
+# The english "original" is behind each text.
+
+# Do not forget to add "custom" to "language" inside the config.yml.
+
+# If interested: you may send this file in for it to become official.
+# GitHub: https://github.com/ItsLeMax/DeathLink/
+# Socials: @ItsLeMax
+
+commands:
+  no-permissions: "" # You do not have the permissions required to execute this command!
+  state-toggled: "" # The world %c% currently %s% when a %c% player dies %c%.
+  reset: "" # does reset
+  no-reset: "" # does not reset
+events:
+  player-death: "" # %p% has died because of %r%.
+  generate: "" # The server will generate a new world in %t% seconds.

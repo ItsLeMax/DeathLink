@@ -1,5 +1,0 @@
-# Lass die Finger von %%, da es vom Plugin ersetzt wird!
-
-init: "%p% wurde erfolgreich geladen!"
-playerDeath: "%p% ist gestorben. %r%."
-generate: "Der Server wird eine neue Welt generieren in %t% Sekunden."

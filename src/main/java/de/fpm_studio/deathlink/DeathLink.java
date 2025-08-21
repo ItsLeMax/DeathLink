@@ -1,12 +1,13 @@
 package de.fpm_studio.deathlink;
 
-import de.fpm_studio.deathlink.listener.OnDeathListener;
-import de.fpm_studio.deathlink.util.WorldGenHandler;
+import de.fpm_studio.deathlink.commands.ToggleDeathLink;
+import de.fpm_studio.deathlink.listener.EntityDamageListener;
+import de.fpm_studio.deathlink.listener.PlayerJoinListener;
+import de.fpm_studio.deathlink.util.ConfigHandler;
 import de.fpm_studio.ilmlib.libraries.ConfigLib;
 import de.fpm_studio.ilmlib.libraries.MessageLib;
 import de.fpm_studio.ilmlib.util.Template;
 import lombok.Getter;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -21,7 +22,7 @@ public final class DeathLink extends JavaPlugin {
     private ConfigLib configLib;
     private MessageLib messageLib;
 
-    private WorldGenHandler worldGenHandler;
+    private ConfigHandler configHandler;
 
     private int timeUntilReset;
 
@@ -32,65 +33,36 @@ public final class DeathLink extends JavaPlugin {
 
         configLib = new ConfigLib(this)
                 .createDefaultConfigs("config")
-                .createConfigsInsideDirectory("languages", "de_DE", "en_US", "custom_lang");
+                .createConfigsInsideDirectory("localization", "de_DE", "en_US", "custom");
 
         messageLib = new MessageLib()
                 .addSpacing()
                 .setPrefix("§3DeathLink §7»")
                 .setFormattingCode(Template.ERROR, 'c');
 
-        // World gen class initialization
+        configHandler = new ConfigHandler(this);
 
-        intializeWorldGen();
-
-        // Event registration and plugin message
-
-        registerEvents();
-
-        final String initialMessage = "§3" + getConfigLib().text("init").replace("%p%", "[DeathLink]");
-
-        Bukkit.getConsoleSender().sendMessage(initialMessage);
-
-    }
-
-    @Override
-    public void onDisable() {
-
-        // Generates a new world on manual server stop if set in the config
-
-        if (getTimeUntilReset() != -1)
-            return;
-
-        getWorldGenHandler().initiate();
-
-    }
-
-    /**
-     * Initializes the world gen class
-     *
-     * @author ItsLeMax
-     * @since 1.0.0
-     */
-    private void intializeWorldGen() {
+        // World generator logic initialization
 
         this.timeUntilReset = getConfigLib().getConfig("config").getInt("timeUntilWorldReset");
-        final boolean archiveWorld = getConfigLib().getConfig("config").getBoolean("archiveWorld");
 
-        this.worldGenHandler = new WorldGenHandler();
-        this.worldGenHandler.setConfigValues(getTimeUntilReset(), archiveWorld);
+        register();
 
     }
 
     /**
-     * Registers the plugins events
+     * Registers commands and events
      *
      * @author ItsLeMax
      * @since 1.0.0
      */
-    private void registerEvents() {
+    @SuppressWarnings("ConstantConditions")
+    private void register() {
 
-        final OnDeathListener onDeathListener = new OnDeathListener(this);
-        getServer().getPluginManager().registerEvents(onDeathListener, this);
+        getServer().getPluginManager().registerEvents(new EntityDamageListener(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
+
+        getCommand("toggledeathlink").setExecutor(new ToggleDeathLink(this));
 
     }
 

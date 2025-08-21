@@ -6,3 +6,7 @@ website: ${project.url}
 
 main: de.fpm_studio.deathlink.DeathLink
 api-version: 1.21
+commands:
+  toggledeathlink:
+    description: Toggles the plugin functionality with a hint to everyone
+    usage: /toggledeathlink

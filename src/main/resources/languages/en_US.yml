@@ -1,5 +1,0 @@
-# Do not touch %% as it does get replaced from the plugin!
-
-init: "%p% has been loaded successfully!"
-playerDeath: "%p% has died. %r%."
-generate: "The server will generate a new world in %t% seconds."

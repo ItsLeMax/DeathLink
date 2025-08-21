@@ -1,0 +1,10 @@
+# Lass die Finger von %%, da es vom Plugin ersetzt wird!
+
+commands:
+  no-permissions: "Du hast nicht die erforderlichen Rechte, um den Befehl auszuführen!"
+  state-toggled: "Die Welt %c% wird aktuell %s%, wenn ein %c% Spieler stirbt %c%."
+  reset: "zurückgesetzt"
+  no-reset: "nicht zurückgesetzt"
+events:
+  player-death: "%p% ist gestorben durch %r%."
+  generate: "Der Server wird eine neue Welt generieren in %t% Sekunden."

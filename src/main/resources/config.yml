@@ -9,12 +9,8 @@ language: en_US
 # 'killall' kills everyone that is not dead yet.
 deathStyle: spectator
 
-# This will set whether the world should be newly generated on ones death.
+# This will set whether the worlds will automatically be newly generated on ones death.
 resetWorldOnDeath: true
 
-# This will affect how much time in SECONDS will pass after ones death until the server generates a new world.
-# The number can be -1, waiting for the worlds deletion until a manual server stop.
-timeUntilWorldReset: 10
-
-# This will rename the world instead of deleting it completely
-archiveWorld: true
+# This will affect how much time in SECONDS will pass after ones death until the server generates new worlds.
+timeUntilWorldReset: 15

@@ -11,3 +11,7 @@ Locks everyone on ones death in minecraft and optionally resets the world
    ![plugins](https://github.com/user-attachments/assets/1d61e5c2-54ec-4adf-a9c1-a13658cacc6f)
 3. (Optional) Change settings of the `DeathLink/config.yml` as you wish.
    ![1 0 0-config](https://github.com/user-attachments/assets/2f656a57-bb99-45d2-9c33-7bc2438ab2b4)
+
+## Permissions
+
+- `deathlink.toggle` to use the `toggledeathlink` command

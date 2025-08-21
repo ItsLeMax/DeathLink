@@ -18,6 +18,8 @@ public final class ConfigHandler {
         final ConfigLib configLib = instance.getConfigLib();
         final FileConfiguration config = instance.getConfig();
 
+        ERROR = configLib.text("commands.error");
+
         STATE_TOGGLED = configLib.text("commands.state-toggled");
         RESET = configLib.text("commands.reset");
         NO_RESET = configLib.text("commands.no-reset");
@@ -31,19 +33,16 @@ public final class ConfigHandler {
 
     }
 
-    private static String STATE_TOGGLED;
-    private static String RESET;
-    private static String NO_RESET;
+    public static String ERROR;
 
-    public static String NO_PERMISSIONS;
-    public static String PLAYER_DEATH;
-    public static String GENERATE;
+    private static String STATE_TOGGLED, RESET, NO_RESET;
+
+    public static String NO_PERMISSIONS, PLAYER_DEATH, GENERATE;
 
     public static String DEATH_STYLE;
     public static boolean RESET_WORLD_ON_DEATH;
 
-    public static boolean INITIALIZE_WORLD_GENERATION;
-    public static boolean IS_LISTENER_ENABLED;
+    public static boolean INITIALIZE_WORLD_GENERATION, IS_LISTENER_ENABLED;
 
     /**
      * Creates an information about the plugins state

@@ -35,12 +35,13 @@ public final class DeathLink extends JavaPlugin {
                 .createDefaultConfigs("config")
                 .createConfigsInsideDirectory("localization", "de_DE", "en_US", "custom");
 
+        configHandler = new ConfigHandler(this);
+
         messageLib = new MessageLib()
                 .addSpacing()
                 .setPrefix("§3DeathLink §7»")
-                .setFormattingCode(Template.ERROR, 'c');
-
-        configHandler = new ConfigHandler(this);
+                .createTemplateDefaults()
+                .setSuffix(Template.ERROR, ConfigHandler.ERROR);
 
         // World generator logic initialization
 

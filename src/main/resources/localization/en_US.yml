@@ -1,6 +1,7 @@
 # Do not touch %% as it does get replaced from the plugin!
 
 commands:
+  error: "Error!"
   no-permissions: "You do not have the permissions required to execute this command!"
   state-toggled: "The world %c% currently %s% when a %c% player dies %c%."
   reset: "does reset"

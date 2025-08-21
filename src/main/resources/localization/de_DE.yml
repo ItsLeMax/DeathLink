@@ -1,6 +1,7 @@
 # Lass die Finger von %%, da es vom Plugin ersetzt wird!
 
 commands:
+  error: "Fehler!"
   no-permissions: "Du hast nicht die erforderlichen Rechte, um den Befehl auszuführen!"
   state-toggled: "Die Welt %c% wird aktuell %s%, wenn ein %c% Spieler stirbt %c%."
   reset: "zurückgesetzt"

@@ -3,7 +3,6 @@ package de.fpm_studio.deathlink.listener;
 import de.fpm_studio.deathlink.DeathLink;
 import de.fpm_studio.deathlink.util.ConfigHandler;
 import de.fpm_studio.ilmlib.libraries.MessageLib;
-import de.fpm_studio.ilmlib.util.Template;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
@@ -77,7 +76,7 @@ public final class EntityDamageListener implements Listener {
 
             onlinePlayer.playSound(onlinePlayer.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1, 1);
 
-            messageLib.sendInfo(onlinePlayer, Template.ERROR, ConfigHandler.PLAYER_DEATH
+            messageLib.sendInfo(onlinePlayer, 'c', ConfigHandler.PLAYER_DEATH
                     .replace("%p%", targetPlayer.getName())
                     .replace("%r%", event.getCause().name().toLowerCase().replaceAll("_", " "))
             );

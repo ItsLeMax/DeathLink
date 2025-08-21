@@ -40,7 +40,7 @@ public final class ToggleDeathLink implements CommandExecutor {
             @NotNull String[] args) {
 
         if (!sender.hasPermission(PERMISSION_TOGGLE)) {
-            messageLib.sendInfo(sender, Template.ERROR, ConfigHandler.NO_PERMISSIONS);
+            messageLib.sendInfo(sender, Template.ERROR, ConfigHandler.COMMANDS_NO_PERMISSIONS);
             return true;
         }
 

@@ -18,29 +18,29 @@ public final class ConfigHandler {
         final ConfigLib configLib = instance.getConfigLib();
         final FileConfiguration config = instance.getConfig();
 
-        ERROR = configLib.text("commands.error");
+        COMMANDS_ERROR = configLib.text("commands.error");
 
-        STATE_TOGGLED = configLib.text("commands.state-toggled");
-        RESET = configLib.text("commands.reset");
-        NO_RESET = configLib.text("commands.no-reset");
+        COMMANDS_STATE_TOGGLED = configLib.text("commands.state-toggled");
+        COMMANDS_RESET = configLib.text("commands.reset");
+        COMMANDS_NO_RESET = configLib.text("commands.no-reset");
 
-        NO_PERMISSIONS = configLib.text("commands.no-permissions");
-        PLAYER_DEATH = configLib.text("events.player-death");
-        GENERATE = configLib.text("events.generate");
+        COMMANDS_NO_PERMISSIONS = configLib.text("commands.no-permissions");
+        EVENTS_PLAYER_DEATH = configLib.text("events.player-death");
+        EVENTS_GENERATE = configLib.text("events.generate");
 
         DEATH_STYLE = config.getString("deathStyle");
-        RESET_WORLD_ON_DEATH = config.getBoolean("resetWorldOnDeath");
+        IS_WORLD_RESET_ENABLED = config.getBoolean("resetWorldOnDeath");
 
     }
 
-    public static String ERROR;
+    public static String COMMANDS_ERROR;
 
-    private static String STATE_TOGGLED, RESET, NO_RESET;
+    private static String COMMANDS_STATE_TOGGLED, COMMANDS_RESET, COMMANDS_NO_RESET;
 
-    public static String NO_PERMISSIONS, PLAYER_DEATH, GENERATE;
+    public static String COMMANDS_NO_PERMISSIONS, EVENTS_PLAYER_DEATH, EVENTS_GENERATE;
 
     public static String DEATH_STYLE;
-    public static boolean RESET_WORLD_ON_DEATH;
+    public static boolean IS_WORLD_RESET_ENABLED;
 
     public static boolean INITIALIZE_WORLD_GENERATION, IS_LISTENER_ENABLED;
 
@@ -54,9 +54,9 @@ public final class ConfigHandler {
      */
     public String info() {
 
-        final String listenerEnabled = (IS_LISTENER_ENABLED ? "§c" + RESET : "§a" + NO_RESET) + "§7";
+        final String listenerEnabled = (IS_LISTENER_ENABLED ? "§c" + COMMANDS_RESET : "§a" + COMMANDS_NO_RESET) + "§7";
 
-        return "§3" + STATE_TOGGLED
+        return "§3" + COMMANDS_STATE_TOGGLED
                 .replaceFirst("%c% ", "§7")
                 .replaceFirst("%s%", listenerEnabled)
                 .replaceFirst("%c% ", "§e")

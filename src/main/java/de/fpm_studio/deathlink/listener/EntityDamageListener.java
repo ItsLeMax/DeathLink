@@ -76,7 +76,7 @@ public final class EntityDamageListener implements Listener {
 
             onlinePlayer.playSound(onlinePlayer.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1, 1);
 
-            messageLib.sendInfo(onlinePlayer, 'c', ConfigHandler.PLAYER_DEATH
+            messageLib.sendInfo(onlinePlayer, 'c', ConfigHandler.EVENTS_PLAYER_DEATH
                     .replace("%p%", targetPlayer.getName())
                     .replace("%r%", event.getCause().name().toLowerCase().replaceAll("_", " "))
             );
@@ -85,7 +85,7 @@ public final class EntityDamageListener implements Listener {
 
         // Reset world if chosen
 
-        if (!ConfigHandler.RESET_WORLD_ON_DEATH)
+        if (!ConfigHandler.IS_WORLD_RESET_ENABLED)
             return;
 
         final AtomicInteger timeUntilReset = new AtomicInteger(instance.getTimeUntilReset());
@@ -101,7 +101,7 @@ public final class EntityDamageListener implements Listener {
 
                 case 600, 300, 180, 60, 30, 10, 5, 4, 3, 2, 1 -> {
 
-                    Bukkit.broadcastMessage("§3" + ConfigHandler.GENERATE
+                    Bukkit.broadcastMessage("§3" + ConfigHandler.EVENTS_GENERATE
                             .replace("%t%", "§c" + timeUntilReset)
                     );
 

@@ -41,7 +41,7 @@ public final class DeathLink extends JavaPlugin {
                 .addSpacing()
                 .setPrefix("§3DeathLink §7»")
                 .createTemplateDefaults()
-                .setSuffix(Template.ERROR, ConfigHandler.ERROR);
+                .setSuffix(Template.ERROR, ConfigHandler.COMMANDS_ERROR);
 
         // World generator logic initialization
 

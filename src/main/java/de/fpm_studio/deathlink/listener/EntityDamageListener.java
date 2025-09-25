@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Handles the death related processes
@@ -26,15 +25,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class EntityDamageListener implements Listener {
 
     private final DeathLink instance;
-
     private final MessageLib messageLib;
 
     public EntityDamageListener(@NotNull final DeathLink instance) {
-
         this.instance = instance;
-
-        messageLib = instance.getMessageLib();
-
+        this.messageLib = instance.getMessageLib();
     }
 
     @EventHandler
@@ -70,6 +65,9 @@ public final class EntityDamageListener implements Listener {
                     onlinePlayer.setHealth(0);
                     break;
 
+                case null, default:
+                    throw new IllegalStateException("Unexpected value: " + ConfigHandler.DEATH_STYLE);
+
             }
 
             // Sound and custom death message
@@ -88,21 +86,21 @@ public final class EntityDamageListener implements Listener {
         if (!ConfigHandler.IS_WORLD_RESET_ENABLED)
             return;
 
-        final AtomicInteger timeUntilReset = new AtomicInteger(instance.getTimeUntilReset());
+        final int[] timeUntilReset = new int[]{instance.getTimeUntilReset()};
 
-        if (timeUntilReset.get() < 0)
+        if (timeUntilReset[0] < 0)
             return;
 
         // New gen after time
 
         Bukkit.getScheduler().scheduleSyncRepeatingTask(instance, () -> {
 
-            switch (timeUntilReset.get()) {
+            switch (timeUntilReset[0]) {
 
                 case 600, 300, 180, 60, 30, 10, 5, 4, 3, 2, 1 -> {
 
                     Bukkit.broadcastMessage("§3" + ConfigHandler.EVENTS_GENERATE
-                            .replace("%t%", "§c" + timeUntilReset)
+                            .replace("%t%", "§c" + timeUntilReset[0])
                     );
 
                     for (final Player onlinePlayer : Bukkit.getOnlinePlayers())
@@ -114,7 +112,7 @@ public final class EntityDamageListener implements Listener {
 
             }
 
-            timeUntilReset.set(timeUntilReset.get() - 1);
+            timeUntilReset[0] = timeUntilReset[0] - 1;
 
         }, 0, 20);
 

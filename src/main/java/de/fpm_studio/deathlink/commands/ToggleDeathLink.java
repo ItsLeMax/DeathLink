@@ -20,14 +20,8 @@ public final class ToggleDeathLink implements CommandExecutor {
 
     private final MessageLib messageLib;
 
-    private final ConfigHandler configHandler;
-
     public ToggleDeathLink(@NotNull final DeathLink instance) {
-
         messageLib = instance.getMessageLib();
-
-        configHandler = instance.getConfigHandler();
-
     }
 
     public static final String PERMISSION_TOGGLE = "deathlink.toggle";
@@ -47,7 +41,7 @@ public final class ToggleDeathLink implements CommandExecutor {
         ConfigHandler.IS_LISTENER_ENABLED = !ConfigHandler.IS_LISTENER_ENABLED;
 
         Bukkit.broadcastMessage("");
-        Bukkit.broadcastMessage(configHandler.info());
+        Bukkit.broadcastMessage(ConfigHandler.info());
         Bukkit.broadcastMessage("");
 
         return true;

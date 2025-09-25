@@ -19,23 +19,24 @@ import org.bukkit.plugin.java.JavaPlugin;
 @Getter
 public final class DeathLink extends JavaPlugin {
 
+    @Getter
+    private static DeathLink instance;
+
     private ConfigLib configLib;
     private MessageLib messageLib;
-
-    private ConfigHandler configHandler;
 
     private int timeUntilReset;
 
     @Override
     public void onEnable() {
 
+        instance = this;
+
         // Initializing the own lib for config and message creation
 
         configLib = new ConfigLib(this)
                 .createDefaultConfigs("config")
                 .createConfigsInsideDirectory("localization", "de_DE", "en_US", "custom");
-
-        configHandler = new ConfigHandler(this);
 
         messageLib = new MessageLib()
                 .addSpacing()
@@ -61,7 +62,7 @@ public final class DeathLink extends JavaPlugin {
     private void register() {
 
         getServer().getPluginManager().registerEvents(new EntityDamageListener(this), this);
-        getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
 
         getCommand("toggledeathlink").setExecutor(new ToggleDeathLink(this));
 
